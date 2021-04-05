@@ -1,25 +1,25 @@
 {
 	"Resources": {
-		"AWSNOv2020Ec201": {
+		"EC2Instance1fromcloudformation": {
 			"Type": "AWS::EC2::Instance",
-			"Properties": {
-				"ImageId": "{{resolve:ssm:/cloud-tcg-param/ImageId:1}}",
-				"InstanceType": "{{resolve:ssm:/cloud-tcg-param/instance-type:1}}",
-				"SubnetId": "{{resolve:ssm:/cloud-tcg-param/subnet:1}}",
+			"Properties": {"ImageId":  "{{resolve:ssm:ImageID:1}}",
+				
+				"InstanceType": "{{resolve:ssm:InstanceType:1}}",
+				
 				"SecurityGroupIds": [{
-					"Fn::GetAtt": ["AWSNov2020Sg", "GroupId"]
+					"Fn::GetAtt": ["AWSsecondsg", "GroupId"]
 				}],
-				"KeyName": "marbatch"
+				"KeyName": "JohnFirstEC2"
 			},
 			"DependsOn": [
-				"AWSNov2020Sg"
+				"AWSsecondsg"
 			]
 		},
-		"AWSNov2020Sg": {
+		"AWSsecondsg": {
 			"Type": "AWS::EC2::SecurityGroup",
 			"Properties": {
 				"GroupDescription": "Dynamic security group from cft",
-				"GroupName": "my-first-new-sg",
+				"GroupName": "mysecondEC2SG",
 				"SecurityGroupIngress": [{
 						"IpProtocol": "tcp",
 						"FromPort": 80,
@@ -33,7 +33,7 @@
 						"CidrIp": "0.0.0.0/0"
 					}
 				],
-				"VpcId": "vpc-0698daa3a3ad74c5d"
+				"VpcId": "vpc-d0c841bb"
 
 			}
 
