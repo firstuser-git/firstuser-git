@@ -21,7 +21,7 @@
 			"Properties": {
 				"ImageId": { "Ref": "AmiID" },
 				"InstanceType": "t2.micro",
-				"SecurityGroupIds": ["sg-05d93fef3d10b0fde"],
+				"SecurityGroupIds": ["sg-4a3f124b"],
 				"SubnetId": { "Ref": "SubnetID" },
 				"KeyName": { "Ref": "UserKeys" },
 				"UserData": { "Fn::Base64" : { "Fn::Join" : ["",[ 
